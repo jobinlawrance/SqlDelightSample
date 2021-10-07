@@ -1,0 +1,39 @@
+
+CREATE TABLE movies (
+  Film text,
+  Genre text,
+  `Lead Studio` text,
+  `Audience score` int DEFAULT NULL,
+  Profitability float DEFAULT NULL,
+  `Rotten Tomatoes` int DEFAULT NULL,
+  `Worldwide Gross` text,
+  Year int DEFAULT NULL
+);
+
+selectAll:
+SELECT *
+FROM movies;
+
+insert:
+INSERT INTO movies(Film, Genre, `Lead Studio`, `Worldwide Gross`, Year)
+VALUES(?, ?, ?, ?,?);
+
+insertObject:
+INSERT INTO movies(Film, Genre, `Lead Studio`, `Audience score`, Profitability, `Rotten Tomatoes`, `Worldwide Gross`, Year)
+VALUES ?;
+
+update:
+UPDATE movies
+SET `Worldwide Gross`=? WHERE Film=?;
+
+delete:
+DELETE FROM movies WHERE Film=?;
+
+filmOrGenre:
+SELECT * FROM movies
+WHERE Film LIKE :searchQuery
+OR Genre LIKE :searchQuery;
+
+filmByNames:
+SELECT * FROM movies
+WHERE Film IN ?;
